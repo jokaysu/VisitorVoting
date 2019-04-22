@@ -1,0 +1,56 @@
+*******************************************************************************
+
+i.
+
+*************************************************
+
+make vote TYPE=EXT
+
+/usr/bin/time -f "%Uu %Ss %Er" ./vote 10 5 500000 1218
+
+11.18u 0.02s 0:11.18r
+
+*************************************************
+
+make vote TYPE=INT
+
+/usr/bin/time -f "%Uu %Ss %Er" ./vote 10 5 500000 1218
+
+11.29u 0.01s 0:11.28r
+
+*************************************************
+
+make vote TYPE=INTB
+
+/usr/bin/time -f "%Uu %Ss %Er" ./vote 10 5 500000 1218
+
+11.87u 0.02s 0:12.01r
+
+*************************************************
+
+make vote TYPE=AUTO
+
+/usr/bin/time -f "%Uu %Ss %Er" ./vote 10 5 500000 1218
+
+13.12u 0.03s 0:13.13r
+
+*************************************************
+
+make vote TYPE=TASK
+
+/usr/bin/time -f "%Uu %Ss %Er" ./vote 10 5 500000 1218
+
+14.46u 0.02s 0:14.47r
+
+*************************************************
+
+ii.
+
+EXT is the fastest one, because it is implicitly wait and signal mechanism.
+INTB is slower than the INT version, because it randomly allows some barging 
+callers, which uses some CPU time to get through. AUTO version is even slower
+because it regularly checks if (pred) is true or not to determine the 
+unblocking. TASK is the slowest one because it centrallized all the computing
+to the server side, which decreases the concurrency.
+
+*************************************************

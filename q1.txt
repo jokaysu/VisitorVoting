@@ -1,0 +1,26 @@
+Because the doctor tricked them to look at each other.
+
+All of the angels can actally move forward but they wait for each other, which is a 
+similar mechanism as the "livelock" saying that "You go first".
+
+Angel A looks at Angel B.
+Angel B looks at Angel C.
+Angel C looks at Angel B.
+Angel D looks at Angel C.
+
+Graph is like this:
+
+A      D
+ \    /
+  \  /
+   \/
+   /\
+| /  \ |
+|/_  _\|
+
+C<---->B
+
+
+Because all of them can move forward, it is not a "deadlock". 
+
+Hence, it is a "livelock".

@@ -1,0 +1,363 @@
+q2TASK.testdoc
+
+***********************************************************************************
+
+Test1:
+
+It checks if the voters tally works.
+
+./vote 10 1 1
+V0      V1      V2      V3      V4      V5      V6      V7      V8      V9      
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* 
+S                               S       S               S               S       
+                                                        V 0,2,1                 
+                                                        B 1                     
+                                                        C                       
+V 1,0,2                 S       V 1,2,0 V 2,1,0         U 0             V 0,1,2 
+                                        B 1                                     
+                                        C                                       
+        S       S       V 2,1,0         U 0     S       F s             B 1     
+                                                                        C       
+B 1     V 1,2,0 V 2,1,0                 F g     V 1,0,2                 U 0     
+C                                                                               
+U 0                                                                     F s     
+F g                                                             S               
+                                B 1                             V 2,0,1         
+                                C                                               
+                        B 1     U 0                                             
+                        C                                                       
+                        U 0     F s             B 1                             
+                                                C                               
+        B 1             F g                     U 0                             
+        C                                                                       
+        U 0     B 1                             F g                             
+                C                                                               
+        F s     U 0                                             B 1             
+                                                                C               
+                F g                                             U 0             
+                                                                F g             
+*****************
+All tours started
+
+***********************************************************************************
+
+Test2:
+
+It checks if the voters tally can handle multple voters in a more-than-one group.
+
+./vote 8 4 2
+V0      V1      V2      V3      V4      V5      V6      V7      
+******* ******* ******* ******* ******* ******* ******* ******* 
+                                                        S       
+                        S                               V 0,1,2 
+                        V 2,1,0                         B 1     
+S                       B 2             S                       
+V 1,2,0                         S                               
+B 3                                     V 1,0,2                 
+                                        B 4                     
+                                        C               U 3     
+U 1     S       S       U 2     V 2,0,1                 F g     
+                        F g             U 0     S       S       
+F g     V 0,2,1 V 0,2,1 S               F g     V 0,2,1         
+                        V 2,1,0 B 1     S               V 1,0,2 
+        B 4     B 3                     V 0,1,2 B 2             
+S       C                       U 3                             
+V 2,0,1         U 1             F s             U 2             
+        U 0                                     F s             
+        F s     F s             S                               
+B 4                     B 1     V 0,2,1 B 3             B 2     
+C                       U 3                             U 2     
+                S       F g             U 1     S               
+U 0             V 2,0,1                 F g     V 2,1,0 F g     
+F g     S                                                       
+        V 1,0,2 B 3             B 1             B 2             
+        B 4                                                     
+        C       U 1             U 3             U 2             
+        U 0     F g             F g             F g             
+        F g                                                     
+*****************
+All tours started
+
+It works.
+
+***********************************************************************************
+
+Test3:
+
+It checks if the voters tally can handle some failing situations and help those
+blocked threads to come out from those failing situations.
+
+./vote 10 5 20
+V0      V1      V2      V3      V4      V5      V6      V7      V8      V9      
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* 
+                                S                                               
+                                V 0,2,1                                         
+S                               B 1                     S       S       S       
+                                                        V 2,0,1         V 0,1,2 
+V 2,0,1 S       S       S                               B 2     V 2,1,0 B 3     
+B 5     V 2,0,1 V 2,1,0 V 2,1,0                 S               B 4             
+C                               U 4     S               U 3                     
+                                F g     V 2,1,0 V 2,0,1         U 1     U 2     
+U 0                                                     F g     F g     F g     
+                                                                S               
+F g     B 1     B 2     B 3                     B 4             V 0,2,1         
+S                                                                               
+V 0,1,2                                 B 5             S               S       
+        U 4                     S       C               V 1,2,0         V 2,1,0 
+        F g     U 3     U 2     V 2,0,1         U 1                             
+                F g     F g             U 0     F g                             
+                        S               F g     S               B 1             
+B 2             S                               V 1,2,0                         
+        S       V 0,1,2 V 0,1,2 B 5                     B 4             B 3     
+        V 0,1,2                 C                               U 4             
+                                                                F s             
+U 3                                                             S               
+F s                                                                             
+S                                                                       U 2     
+V 0,2,1                         U 0                     U 1     V 2,1,0 F s     
+                                F s     S       B 1     F s                     
+B 5     B 4     B 2     B 3             V 1,0,2                                 
+C                                               U 4                     S       
+                U 3     U 2                     F s                     V 0,2,1 
+        U 1     F s     F s     S               S       S                       
+U 0     F s                     V 1,2,0         V 2,0,1 V 1,2,0                 
+F s             S                       B 2                     B 1             
+S               V 2,0,1 S                       B 4     B 5             B 3     
+V 0,2,1 S               V 1,0,2         U 3             C       U 4             
+        V 1,0,2                                                 F g     U 2     
+                                        F g     U 1     U 0     S               
+                                                F g             V 0,1,2         
+                                B 1             S       F g             F g     
+                B 2                             V 1,2,0 S                       
+B 4     B 5             B 3                             V 1,0,2         S       
+        C       U 3             U 4                                     V 1,0,2 
+U 1             F g     U 2     F g     S                                       
+F g     U 0             F g             V 0,1,2                                 
+        F g     S               S                                               
+S               V 1,2,0 S       V 2,1,0         B 2     B 3     B 1             
+V 2,1,0                 V 0,1,2         B 5                             B 4     
+                                        C       U 3             U 4             
+        S                                               U 2     F s             
+        V 2,0,1                         U 0     F s     F s             U 1     
+                                        F s                     S       F s     
+B 3             B 2             B 1                             V 0,1,2 S       
+        B 5             B 4                     S                       V 0,2,1 
+U 2     C       U 3             U 4     S       V 2,0,1 S                       
+F g     U 0     F g     U 1     F g     V 1,2,0         V 1,2,0                 
+        F g             F g                                     B 1     B 2     
+                        S                                                       
+                S       V 0,2,1                 B 3                             
+                V 2,1,0         S       B 4             B 5                     
+                                                        C       U 4     U 3     
+                                V 0,2,1 U 1     U 2             F s     F s     
+                                                                S               
+S       S                                       F s     U 0     V 0,1,2         
+V 2,0,1 V 0,1,2         B 1             F s     S       F s             S       
+B 5             B 2             B 3             V 0,1,2         B 4     V 0,2,1 
+C               U 3     U 4                             S                       
+                        F s     U 2                     V 0,2,1                 
+                F s             F s                             U 1             
+U 0             S                                               F s             
+                V 0,2,1                 S                                       
+F s     B 1                             V 2,1,0 B 2             S       B 3     
+S                       S                               B 4     V 0,1,2         
+V 2,0,1         B 5     V 1,2,0 S                                               
+        U 4     C               V 2,0,1         U 3                             
+        F s                                     F s     U 1             U 2     
+                U 0                                     F s             F s     
+        S       F s                     B 1                             S       
+B 3     V 0,2,1 S       B 4                     S               B 2     V 0,1,2 
+                V 1,0,2         B 5             V 2,1,0                         
+                                C       U 4             S                       
+U 2                                     F g             V 1,0,2 U 3             
+F g                     U 1     U 0                             F g             
+S                       F g     F g     S                                       
+V 0,2,1 B 1             S       S       V 2,1,0 B 3                     B 2     
+                B 4             V 2,0,1                 B 5                     
+        U 4             V 0,1,2                         C       S       U 3     
+        F g                                     U 2             V 2,1,0 F g     
+                U 1                             F g     U 0             S       
+B 2     S       F g                     B 1     S       F g             V 1,2,0 
+        V 2,0,1         B 4     B 3             V 0,2,1 S       B 5             
+U 3                                     U 4             V 1,2,0 C               
+F g             S       U 1     U 2     F g                                     
+S               V 1,0,2 F g     F g     S                       U 0             
+V 2,1,0 B 3                             V 0,1,2 B 2             F g     B 1     
+                                                                S               
+                B 5                                     B 4     V 0,2,1         
+                C                               U 3                     U 4     
+                                S                                       F s     
+        U 2             S       V 1,2,0                                 S       
+                        V 2,0,1                         U 1                     
+        F s                                     F s     F s                     
+                                                S                               
+                U 0                             V 2,0,1                 V 1,2,0 
+B 1             F s                                                             
+                S                       B 2                                     
+        S       V 1,0,2         B 4                             B 3             
+        V 2,1,0         B 5                                                     
+U 4                     C               U 3                     U 2             
+F s                     U 0     U 1     F s             S       F s             
+S                       F s     F s             B 1     V 0,2,1 S       B 2     
+V 1,0,2                                 S                       V 0,2,1         
+        B 4     B 3             S       V 1,2,0                                 
+                                V 0,1,2                 B 5                     
+                                                U 4     C                       
+                U 2     S                       F g                     U 3     
+        U 1     F g     V 1,2,0                                         F g     
+B 1     F g                                             U 0                     
+                        B 5     B 4     B 3     S       F g     B 2             
+U 4                     C                               S                       
+F s             S                       U 2     V 0,1,2 V 0,1,2 U 3             
+                V 0,1,2                                         F s     S       
+        S               U 0     U 1     F s                             V 2,1,0 
+S       V 0,1,2 B 3     F s     F s     S       B 2     B 1             B 4     
+V 2,1,0 B 5                                                                     
+        C                                               U 4                     
+                                        V 1,2,0 U 3     F s     S               
+                                                F s                             
+                U 2     S       S               S               V 1,2,0         
+                F s     V 1,0,2 V 2,0,1                 S               U 1     
+        U 0                                     V 1,2,0                 F s     
+B 1     F s                                             V 1,0,2         S       
+                        B 4     B 5     B 2                     B 3     V 2,1,0 
+U 4             S               C       U 3                     U 2             
+F g     S               U 1             F g                     F g             
+S       V 1,0,2 V 0,1,2 F g     U 0                                             
+V 2,1,0                         F g                                             
+                                S               B 1                             
+                                V 1,2,0 S               B 2                     
+        B 5     B 4                     V 2,1,0                         B 3     
+        C               S                       U 4             S               
+                U 1     V 1,2,0                 F g     U 3     V 2,0,1 U 2     
+        U 0     F g                             S       F g             F g     
+B 1     F g     S                               V 2,1,0 S                       
+                V 1,0,2 B 4     B 2     B 3             V 0,2,1 B 5             
+U 4                             U 3                             C               
+F g     S               U 1     F g     U 2                             S       
+        V 1,0,2         F g             F g                     U 0     V 1,0,2 
+                                        S                       F g             
+S               B 2                     V 0,2,1 B 1             S               
+V 2,0,1 B 5                                             B 3     V 1,2,0 B 4     
+        C       U 3                             U 4     U 2                     
+                F g     S       S               F g                             
+                                V 1,0,2                 F g             U 1     
+                                                        S                       
+        U 0             V 0,2,1         B 1             V 1,0,2         F g     
+B 2     F g                     B 4             S               B 3     S       
+        S                                       V 1,0,2 B 5             V 0,1,2 
+                S                       U 4             C                       
+U 3     V 2,0,1 V 2,1,0                                         U 2             
+F g                                     F g                                     
+                                        S                                       
+                                U 1     V 2,0,1         U 0     F g             
+                                F g                             S               
+S                       B 1                             F g     V 1,0,2         
+V 0,2,1         B 4             S               B 2     S               B 3     
+        B 5                     V 1,2,0                                         
+        C               U 4                     U 3     V 0,2,1         U 2     
+                                                F g                             
+        U 0     U 1     F g                     S                       F g     
+        F g     F g     S               B 1     V 2,0,1         B 2             
+B 3                     V 1,0,2 B 4                     B 5                     
+                                        U 4             C       U 3             
+                                        F s                     F s     S       
+U 2     S                       U 1                                     V 2,1,0 
+F s     V 1,0,2                                         U 0                     
+                S                                       F s                     
+S               V 1,0,2         F s             B 1     S                       
+V 2,0,1                 B 2                             V 0,2,1 S       B 3     
+        B 4     B 5                     S                       V 1,0,2         
+                C       U 3             V 2,1,0 U 4                             
+                                                F g                     U 2     
+        U 1             F g     S               S                       F g     
+                U 0             V 0,1,2                                         
+B 1     F g     F g             B 5     B 4     V 0,1,2 B 2     B 3             
+U 4             S       S       C                       U 3     U 2     S       
+F g             V 1,2,0                                                         
+S                       V 2,1,0         U 1             F g             V 1,0,2 
+        S                               F g                     F g             
+V 2,1,0 V 2,1,0                 U 0     S                                       
+                B 2     B 3     F g     V 0,2,1 B 1     S                       
+                                                        V 0,1,2 S               
+        B 5                                                     V 0,1,2 B 4     
+        C       U 3                             U 4                             
+                F g     U 2     S               F g                     U 1     
+                        F g     V 2,0,1                                 F g     
+        U 0             S                                                       
+B 1     F g             V 1,2,0         B 2     S       B 3     B 4             
+                S               B 5             V 0,2,1                         
+U 4                             C                                       S       
+F s             V 2,1,0                 U 3             U 2             V 0,1,2 
+                                U 0     F s             F s     U 1             
+                                                        S                       
+S       S               B 1     F s                     V 2,1,0 F s             
+V 1,0,2 V 2,0,1                                 B 2             S               
+                B 3                     S                       V 0,2,1 B 4     
+                                        V 1,0,2         B 5                     
+                        U 4                     U 3     C                       
+                U 2     F s                     F s                     U 1     
+                F s             S               S       U 0                     
+                                V 1,2,0                                 F s     
+                                                        F s             S       
+B 1     B 2             S               B 4     V 2,1,0 S       B 3     V 2,1,0 
+                        V 0,2,1 B 5                                             
+U 4     U 3                     C                       V 1,2,0 U 2             
+F g     F g                             U 1                     F g             
+                S               U 0     F g                                     
+S               V 2,0,1 B 3     F g     S       B 2                     B 1     
+V 1,2,0                         S       V 2,0,1         B 4                     
+                B 5             V 2,0,1                                         
+        S       C                               U 3                     U 4     
+        V 0,2,1         U 2                     F g             S       F g     
+                U 0     F g                             U 1     V 1,0,2         
+B 2     B 4     F g             B 3     B 1     S       F g             S       
+                                                V 2,0,1         B 5             
+U 3                                     U 4             S       C       V 1,2,0 
+F g                             U 2     F g             V 2,0,1                 
+S       U 1     S       S       F g     S                       U 0             
+V 1,0,2 F g     V 0,2,1 V 1,2,0         V 0,2,1 B 1     B 3     F g     B 2     
+B 4             B 5                                                             
+                C                               U 4             S               
+        S                                       F g     U 2     V 1,2,0 U 3     
+U 1     V 1,0,2 U 0             S                       F g             F g     
+F g             F g     B 1     V 0,1,2 B 2     S                               
+S       B 4                     B 5             V 0,2,1 S       B 3             
+                        U 4     C       U 3             V 0,1,2                 
+V 1,0,2                 F s                                     U 2     S       
+        U 1                             F s                     F s     V 1,0,2 
+        F s                     U 0                             S               
+                S       S       F s             B 1     B 2     V 2,0,1         
+B 3             V 2,0,1 V 2,0,1 S                                               
+        S                       V 1,0,2                                 B 4     
+        V 2,0,1                                                 B 5             
+                                        S       U 4     U 3     C               
+U 2                                     V 2,1,0 F g                             
+F g                                                     F g     U 0     U 1     
+                                                                F g     F g     
+                                                                        S       
+        B 4     B 1     B 2     B 3     B 5     S                       V 2,0,1 
+                U 4     U 3             C       V 1,2,0                         
+        U 1     F g     F g     U 2                                             
+                        S                                                       
+        F g             V 2,0,1 F g     U 0                                     
+        S       S                       F g     B 2                     B 1     
+        V 2,1,0 V 0,1,2 B 3                                                     
+        B 4     B 5                                                             
+                C               S               U 3                     U 4     
+        U 1             U 2     V 1,0,2 S       F g                     F g     
+        F g     U 0     F g     B 1     V 2,1,0                                 
+                F g     S               B 2                                     
+                        V 0,1,2                                                 
+        S               B 3                                                     
+        V 0,1,2         X       X       X                                       
+        X                                                                       
+*****************
+All tours started
+
+It is so hard to get this failing situation. I tried ./vote 10 5 5 for many times.
+I tried ./vote 10 5 10 and finally stopped in ./vote 10 5 20. As above, we got
+V3, V4, V5 as three blocking voters and successfully got unblocked and return
+failing. It works just perfectly.
+
+***********************************************************************************  
